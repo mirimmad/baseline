@@ -1,7 +1,6 @@
 package ast
 
 import (
-	"bytes"
 	"fmt"
 )
 
@@ -18,64 +17,64 @@ func (n *Number) String() string {
 }
 
 type Id struct {
-	Value string
+	value string
 }
 
 func (i *Id) String() string {
-	return fmt.Sprintf("%s", i.Value)
+	return ""
 }
 
 type Not struct {
-	Term AST
+	term AST
 }
 
 func (n *Not) String() string {
-	return fmt.Sprintf("Not [%s]", n.Term.String())
+	return ""
 }
 
-type Equal struct {
-	Left  AST
-	Right AST
+type String struct {
+	left  AST
+	right AST
 }
 
-func (e *Equal) String() string {
-	return fmt.Sprintf("Eq [%s %s]", e.Left.String(), e.Right.String())
+func (e *String) String() string {
+	return ""
 }
 
 type Add struct {
-	Left  AST
-	Right AST
+	left  AST
+	right AST
 }
 
 func (a *Add) String() string {
-	return fmt.Sprintf("Add [%s %s]", a.Left.String(), a.Right.String())
+	return ""
 }
 
 type Subtract struct {
-	Left  AST
-	Right AST
+	left  AST
+	right AST
 }
 
 func (s *Subtract) String() string {
-	return fmt.Sprintf("Subt [%s %s]", s.Left.String(), s.Right.String())
+	return ""
 }
 
 type Multiply struct {
-	Left  AST
-	Right AST
+	left  AST
+	right AST
 }
 
 func (m *Multiply) String() string {
-	return fmt.Sprintf("Mul [%s %s]", m.Left.String(), m.Right.String())
+	return ""
 }
 
 type Divide struct {
-	Left  AST
-	Right AST
+	left  AST
+	right AST
 }
 
 func (d *Divide) String() string {
-	return fmt.Sprintf("Div [%s %s]", d.Left.String(), d.Right.String())
+	return ""
 }
 
 type Call struct {
@@ -84,93 +83,68 @@ type Call struct {
 }
 
 func (c *Call) String() string {
-	var buffer bytes.Buffer
-	buffer.WriteString(fmt.Sprintf("Call ([%s] [", c.Callee))
-	for _, v := range c.Args {
-		buffer.WriteString(v.String())
-	}
-	buffer.WriteString("])")
-	return buffer.String()
-
+	return ""
 }
 
 type Return struct {
-	Term AST
+	term AST
 }
 
 func (r *Return) String() string {
-	return fmt.Sprintf("Return [%s]", r.Term.String())
+	return ""
 }
 
 type Block struct {
-	Statements []AST
+	statements []AST
 }
 
 func (b *Block) String() string {
-	var buffer bytes.Buffer
-	buffer.WriteString("Block [\n")
-	for _, v := range b.Statements {
-		buffer.WriteString(v.String())
-		buffer.WriteString("\n")
-	}
-	buffer.WriteString("]")
-	return buffer.String()
+	return ""
 }
 
 type IF struct {
-	Condition   AST
-	Consequence AST
-	Alternative AST
+	condition   AST
+	consequence AST
+	alternative AST
 }
 
 func (i *IF) String() string {
-	return fmt.Sprintf("IF [ %s %s %s ]", i.Condition.String(), i.Consequence.String(), i.Alternative.String())
+	return ""
 }
 
 type Defintion struct {
-	Name       string
-	Parameters []string
-	Body       AST
+	name       string
+	parameters []string
+	body       AST
 }
 
 func (d *Defintion) String() string {
-	var buffer bytes.Buffer
-	buffer.WriteString("Def [Name: ")
-	buffer.WriteString(d.Name)
-	buffer.WriteString("Params: ")
-	for _, v := range d.Parameters {
-		buffer.WriteString(v)
-		buffer.WriteString(" ")
-	}
-	buffer.WriteString("] Body: ")
-	buffer.WriteString(d.Body.String())
-	return buffer.String()
-
+	return ""
 }
 
 type Var struct {
-	Name  string
-	Value AST
+	name  string
+	value AST
 }
 
 func (v *Var) String() string {
-	return fmt.Sprintf("VAR [%s %s]", v.Name, v.Value.String())
+	return ""
 }
 
 type Assignment struct {
-	Name  string
-	Value AST
+	name  string
+	value AST
 }
 
 func (a *Assignment) String() string {
-	return fmt.Sprintf("Asssing [%s %s]", a.Name, a.Value.String())
+	return ""
 }
 
 type While struct {
-	Condition AST
-	Body      AST
+	condition AST
+	body      AST
 }
 
 func (w *While) String() string {
-	return fmt.Sprintf("While [%s %s]", w.Condition.String(), w.Body.String())
+	return ""
 }
