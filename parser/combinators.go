@@ -7,7 +7,7 @@ import (
 
 type ParseFn func(s Source) *ParserResult
 type CallBack func(value interface{}) *Parser
-type CallBackForMap func(value interface{}) interface{}
+type CallBackForMap func(value interface{})interface{}
 
 type Source struct {
 	Str   string
